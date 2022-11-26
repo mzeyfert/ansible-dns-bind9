@@ -1,0 +1,9 @@
+options {
+	directory "/var/cache/bind";
+	listen-on port 53 { any; };
+	forwarders {
+	 {{ external_nameservers | join('; ') }};
+	};
+	dnssec-enable no;
+	dnssec-validation no;
+};

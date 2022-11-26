@@ -1,0 +1,17 @@
+---
+
+- name: Import install tasks
+  ansible.builtin.import_tasks: install.yml
+  when: '"dns_servers" in group_names'
+
+- name: Import configuration tasks for master node
+  ansible.builtin.import_tasks: configuration-master.yml
+  when: '"dns_master" in group_names'
+
+- name: Import configuration tasks for slave nodes
+  ansible.builtin.import_tasks: configuration-slaves.yml
+  when: '"dns_slaves" in group_names'
+
+- name: Import post configuration tasks for servers
+  ansible.builtin.import_tasks: post-configuration.yml
+  when: '"dns_servers" in group_names'

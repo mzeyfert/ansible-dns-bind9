@@ -1,0 +1,10 @@
+---
+- name: Copy resolved.conf
+  ansible.builtin.copy:
+    src: resolved.conf
+    dest: /etc/systemd/resolved.conf
+    owner: root
+    group: root
+    mode: 0644
+  notify:
+    - Restart systemd-resolved

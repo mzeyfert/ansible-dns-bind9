@@ -1,0 +1,10 @@
+---
+- name: Deploy dns on clients
+  hosts: dns_servers
+  become: true
+
+  vars:
+    bind9_zone: example.tech
+
+  roles:
+    - { name: dns-servers, tags: dns-servers }

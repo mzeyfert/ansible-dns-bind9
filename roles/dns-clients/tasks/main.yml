@@ -1,0 +1,4 @@
+---
+- name: Import configuration tasks
+  ansible.builtin.import_tasks: configuration-clients.yml
+  when: '"dns_clients" in group_names'

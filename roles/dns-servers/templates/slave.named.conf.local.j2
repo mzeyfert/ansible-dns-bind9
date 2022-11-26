@@ -1,0 +1,5 @@
+zone "{{ bind9_zone }}" {
+    type slave;
+    file "/etc/bind/db.{{ bind9_zone }}";
+    masters { {{ dns_master_ip }}; };
+};

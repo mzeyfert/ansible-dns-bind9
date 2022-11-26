@@ -1,0 +1,6 @@
+---
+bind9_version: 1:9.16.1-0ubuntu2.11
+
+external_nameservers:
+  - 8.8.8.8
+  - 77.88.8.8

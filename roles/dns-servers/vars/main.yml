@@ -1,0 +1,8 @@
+---
+bind9_package_name: 'bind9={{ bind9_version }}'
+
+dns_master_hostname: '{{ groups["dns_master"] | first }}'
+dns_master_ip: '{{ hostvars[dns_master_hostname].ansible_host }}'
+
+dns_slave_hostname: '{{ groups["dns_slaves"] | first }}'
+dns_slave_ip: '{{ hostvars[dns_slave_hostname].ansible_host }}'

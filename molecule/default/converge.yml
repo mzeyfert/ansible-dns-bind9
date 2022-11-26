@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+
+  vars:
+    bind9_zone: example.tech
+
+  roles:
+    - { name: ./roles/dns-servers, tags: dns-servers }
+    - { name: ./roles/dns-clients, tags: dns-clients }

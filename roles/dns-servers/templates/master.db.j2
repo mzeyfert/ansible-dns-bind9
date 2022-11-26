@@ -1,0 +1,21 @@
+;
+; BIND data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	{{ dns_master_hostname }}.{{ bind9_zone }}. admin.{{ bind9_zone }}. (
+            {{ ansible_date_time.epoch }} ; Serial
+             604800		; Refresh
+              86400		; Retry
+            2419200		; Expire
+             604800 )	; Negative Cache TTL
+;
+@	IN	NS	{{ dns_master_hostname }}.{{ bind9_zone }}.
+{{ dns_master_hostname }}.{{ bind9_zone }}. IN  A   {{ dns_master_ip }}
+
+{% for host in groups['dns_slaves'] %}
+{{ host }}.{{ bind9_zone }}.  IN  A {{ hostvars[host].ansible_host }}
+{% endfor %}
+
+{% for host in groups['dns_clients'] %}
+{{ host }}.{{ bind9_zone }}.  IN  A {{ hostvars[host].ansible_host }}
+{% endfor %}

@@ -1,0 +1,17 @@
+---
+all:
+  children:
+    dns_servers:
+      children:
+        dns_master:
+          hosts:
+            dns-server-master:
+              ansible_host: 192.168.56.110
+      dns_slaves:
+        hosts:
+          dns-server-slave-1:
+            ansible_host: 192.168.56.120
+    dns_clients:
+      hosts:
+        dns-client-1:
+          ansible_host: 192.168.56.210

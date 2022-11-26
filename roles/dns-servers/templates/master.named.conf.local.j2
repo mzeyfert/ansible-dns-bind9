@@ -1,0 +1,5 @@
+zone "{{ bind9_zone }}" {
+    type master;
+    file "/etc/bind/db.{{ bind9_zone }}";
+    allow-transfer { any; };
+};
